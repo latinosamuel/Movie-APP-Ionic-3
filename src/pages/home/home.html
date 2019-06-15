@@ -14,4 +14,15 @@
     Take a look at the <code>src/pages/</code> directory to add or change tabs,
     update any existing page or create new pages.
   </p>
+
+  <ion-card *ngFor="let item of list">
+  <ion-card-header>
+    {{ item }}
+  </ion-card-header>
+
+  <ion-card-content>
+   Texto opcional dentro do Card
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
