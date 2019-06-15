@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  public welcome : string = "Welcome to Ionic 4!";
+  public welcome : string = "Welcome to Ionic !";
 
   constructor(public navCtrl: NavController) {
 
