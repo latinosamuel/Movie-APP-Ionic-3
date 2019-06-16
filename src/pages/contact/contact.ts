@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MovieProvider } from '../../providers/movie/movie';
 
 @Component({
   selector: 'page-contact',
-  templateUrl: 'contact.html'
+  templateUrl: 'contact.html',
+  providers: [
+    MovieProvider
+  ]
 })
 export class ContactPage {
 
   public contacts : Array<Object> = [];
-  constructor(public navCtrl: NavController) {
+
+  constructor(public navCtrl: NavController, public movieProvider : MovieProvider) {
       this.contacts = [
         {
           "nome": "Woody",
@@ -27,5 +32,18 @@ export class ContactPage {
         }
       ]
   }
+
+  ionViewDidLoad(){
+    this.movieProvider.getPopularMovie().subscribe(
+      data =>{
+        const obj = (data as any);
+        const obj_json = JSON.parse(obj._body);
+        console.log(obj_json)
+      }, error =>{
+        console.log(error);
+      }
+    )
+  }
+
 
 }
