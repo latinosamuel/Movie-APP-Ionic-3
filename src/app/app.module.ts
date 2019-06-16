@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { MovieProvider } from '../providers/movie/movie';
 import { MovieDetailPageModule } from '../pages/movie-detail/movie-detail.module';
+import { SQLite } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../providers/database/database';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MovieDetailPageModule } from '../pages/movie-detail/movie-detail.module
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    MovieProvider,
+    SQLite,
+    DatabaseProvider
   ]
 })
 export class AppModule {}
