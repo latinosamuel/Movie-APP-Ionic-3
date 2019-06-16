@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
+import { MovieDetailPage } from '../movie-detail/movie-detail';
 
 @Component({
   selector: 'page-feed',
@@ -30,4 +31,11 @@ export class FeedPage {
       }
     )
   }
+  
+// Open Movie Detail Page
+  viewMovieDetails(movie){
+    console.log(movie);
+    this.navCtrl.push(MovieDetailPage, {id: movie.id});
+  }
+
 }

@@ -8,7 +8,7 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let movie of list_movie">
+  <ion-card *ngFor="let movie of list_movie" (click)="viewMovieDetails(movie)">
 
     <ion-item>
       <ion-avatar item-start>

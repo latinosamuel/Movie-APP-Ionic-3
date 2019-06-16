@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { MovieProvider } from '../providers/movie/movie';
+import { MovieDetailPageModule } from '../pages/movie-detail/movie-detail.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MovieProvider } from '../providers/movie/movie';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    MovieDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
