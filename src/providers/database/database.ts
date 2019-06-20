@@ -28,13 +28,13 @@ export class DatabaseProvider {
   }
 
   private createTables(db : SQLiteObject){
-    return db.sqlBatch(
-      ['CREATE TABLE IF NOT EXISTS movie(id integer primary key NOT NULL, backdrop_path VARCHAR(100), original_title VARCHAR(100) NOT NULL, overview VARCHAR(1000), poster_path VARCHAR(100), title VARCHAR(100) NOT NULL);']
-      ['CREATE TABLE IF NOT EXISTS genres(id integer primary key NOT NULL, name VARCHAR(60) NOT NULL);']
-      ['CREATE TABLE IF NOT EXISTS production_companies( id integer primary key NOT NULL, name VARCHAR(80) NOT NULL, logo_path VARCHAR(100), origin_country VARCHAR(100) NOT NULL);']
-      ['CREATE TABLE IF NOT EXISTS movie_genres(id_movie integer NOT NULL, id_genres integer NOT NULL, FOREIGN KEY(id_movie) REFERENCES movie(id), FOREIGN KEY(id_genres) REFERENCES genres(id), PRIMARY KEY(id_movie,id_genres));']  
+    return db.sqlBatch([
+      ['CREATE TABLE IF NOT EXISTS movie(id integer primary key NOT NULL, backdrop_path VARCHAR(100), original_title VARCHAR(100) NOT NULL, overview VARCHAR(1000), poster_path VARCHAR(100), title VARCHAR(100) NOT NULL);'],
+      ['CREATE TABLE IF NOT EXISTS genres(id integer primary key NOT NULL, name VARCHAR(60) NOT NULL);'],
+      ['CREATE TABLE IF NOT EXISTS production_companies( id integer primary key NOT NULL, name VARCHAR(80) NOT NULL, logo_path VARCHAR(100), origin_country VARCHAR(100) NOT NULL);'],
+      ['CREATE TABLE IF NOT EXISTS movie_genres(id_movie integer NOT NULL, id_genres integer NOT NULL, FOREIGN KEY(id_movie) REFERENCES movie(id), FOREIGN KEY(id_genres) REFERENCES genres(id), PRIMARY KEY(id_movie,id_genres));'],  
       ['CREATE TABLE IF NOT EXISTS movie_prod_comp(id_movie integer NOT NULL, id_production_companies integer NOT NULL, FOREIGN KEY(id_movie) REFERENCES movie(id), FOREIGN KEY(id_production_companies) REFERENCES genres(id), PRIMARY KEY(id_movie, id_production_companies));']
-   ).then(() =>{
+    ]).then(() =>{
         console.log("Successfully create tables")
       }).catch(e => console.error(e));
   }

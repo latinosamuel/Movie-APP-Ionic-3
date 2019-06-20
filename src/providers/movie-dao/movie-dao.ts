@@ -15,14 +15,14 @@ export class MovieDaoProvider {
 
   constructor(public dbProvider : DatabaseProvider) {}
 
-  public insert(movie : Movie) : void{
-      this.dbProvider.getDB()
+  public insert(movie : Movie){
+      return this.dbProvider.getDB()
       .then((db : SQLiteObject) =>{
         let sql = 'insert into movie (id, backdrop_path, original_title, overview, poster_path, title) values (?, ?, ?, ?, ?, ?)';
         let data = [movie.getID(), movie.getBackdropPath(),movie.getTitle(),
         movie.getOverview(), movie.getPosterPath(), movie.getTitle()];
 
-        db.executeSql(sql,data).then(() =>{
+        return db.executeSql(sql,data).then(() =>{
           console.log("Inserted Movie");
         }).catch( e => console.error(e));
       })

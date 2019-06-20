@@ -2,6 +2,11 @@ export class Genre {
     private id : number;
     private name : string;
 
+    constructor(id? : number, name? : string){
+        this.setID(id);
+        this.setName(name);
+    }
+    
     public setID(id : number) : void{
         this.id = id;
     }

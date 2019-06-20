@@ -13,32 +13,34 @@
 <ion-content >
   <ion-card *ngIf="movie">
     <ion-item>
-      <h1>{{ movie.original_title }}</h1>
-      <p>{{ movie.release_date }}</p>
+      <h1>{{ movie.getOriginalTitle() }}</h1>
+      <!--<p>{{ movie.release_date }}</p>-->
     </ion-item>
     
-    <img [src]="'https://image.tmdb.org/t/p/w300/' + movie.backdrop_path">
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + movie.getBackdropPath()">
 
     <ion-card-content>
-      <p>{{ movie.overview }}</p>
+      <p>{{ movie.getOverview() }}</p>
       <ion-list no-lines>
         <ion-list-header text-left>
           Gêneros
         </ion-list-header>
-        <ion-item *ngFor = "let genre of movie.genres" text-justify>{{ genre.name }}</ion-item>
+        <ion-item *ngFor = "let genre of movie.getGenres()" text-justify>{{ genre.getName() }}</ion-item>
       </ion-list>
 
       <ion-list no-lines padding-top>
         <ion-list-header text-left>
           Produtoras
         </ion-list-header>
-        <ion-item *ngFor="let companies of movie.production_companies" text-justify>
-            <img *ngIf="companies.logo_path != null"[src]="'https://image.tmdb.org/t/p/w300/' + companies.logo_path" style="max-height: 40px; height:100%; width: auto;">
-            <p *ngIf="companies.logo_path == null">{{ companies.name }}</p>
+        <ion-item *ngFor="let companies of movie.getProductionCompanies()" text-justify>
+            <img *ngIf="companies.getLogoPath() != null"[src]="'https://image.tmdb.org/t/p/w300/' + companies.getLogoPath()" style="max-height: 40px; height:100%; width: auto;">
+            <p *ngIf="companies.getLogoPath() == null">{{ companies.getName() }}</p>
         </ion-item>
       </ion-list>
     </ion-card-content>
  
+    <button ion-button block (click)="save(movie)" >Gurdar Filme</button>
  
+
   </ion-card>
 </ion-content>

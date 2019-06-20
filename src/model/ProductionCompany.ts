@@ -4,6 +4,13 @@ export class ProductionCompany{
     private logoPath : string;
     private originCountry : string;
 
+    constructor(id? : number, name? : string, logopath? : string, originCountry? : string){
+        this.setID(id);
+        this.setName(name);
+        this.setLogoPath(logopath);
+        this.setOriginCountry(originCountry);
+    }
+
     public setID(id : number) : void {
         this.id = id;
     }
