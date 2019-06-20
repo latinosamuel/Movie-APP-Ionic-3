@@ -57,12 +57,12 @@ public update(movie : Movie) : void{
   .catch(e => console.error(e));
 }
 
-public getAll() : Array<Movie>{
-  this.dbProvider.getDB()
+public getAll(){
+  return this.dbProvider.getDB()
   .then((db : SQLiteObject) =>{
     let sql = 'select * from movie';
     let data : any[];
-    db.executeSql(sql,data)
+    return db.executeSql(sql,data)
     .then((data : any) =>{
       if(data.rows.length > 0) {
         let movies = new Array<Movie>();
@@ -77,14 +77,11 @@ public getAll() : Array<Movie>{
       }
     }).catch( e => {
       console.error(e);
-      return null;
     });
   })
   .catch(e => {
     console.error(e);
-    return null;
   });
-  return null;
 }
 
 
