@@ -15,6 +15,7 @@ import { MovieProvider } from '../providers/movie/movie';
 import { MovieDetailPageModule } from '../pages/movie-detail/movie-detail.module';
 import { SQLite } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../providers/database/database';
+import { MovieDaoProvider } from '../providers/movie-dao/movie-dao';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DatabaseProvider } from '../providers/database/database';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MovieProvider,
     SQLite,
-    DatabaseProvider
+    DatabaseProvider,
+    MovieDaoProvider
   ]
 })
 export class AppModule {}
