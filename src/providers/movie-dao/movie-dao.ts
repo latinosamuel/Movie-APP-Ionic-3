@@ -29,13 +29,13 @@ export class MovieDaoProvider {
       .catch(e => console.error(e));
   }
 
-public remove(id : number) : void{
-  this.dbProvider.getDB()
+public remove(id : number){
+  return this.dbProvider.getDB()
       .then((db : SQLiteObject) =>{
         let sql = 'delete from movie where id = ?';
         let data = [id];
 
-        db.executeSql(sql,data).then(() =>{
+        return db.executeSql(sql,data).then(() =>{
           console.log("Removed Movie");
         }).catch( e => console.error(e));
       })
@@ -43,14 +43,14 @@ public remove(id : number) : void{
 
 }
 
-public update(movie : Movie) : void{
-  this.dbProvider.getDB()
+public update(movie : Movie){
+  return this.dbProvider.getDB()
   .then((db : SQLiteObject) =>{
     let sql = 'update movie set id = ?, backdrop_path = ?, original_title = ? , overview = ? , poster_path = ? , title = ? where id = ?';
     let data = [movie.getID(), movie.getBackdropPath(),movie.getTitle(),
     movie.getOverview(), movie.getPosterPath(), movie.getTitle(),movie.getID()];
 
-    db.executeSql(sql,data).then(() =>{
+    return db.executeSql(sql,data).then(() =>{
       console.log("Changed Movie");
     }).catch( e => console.error(e));
   })

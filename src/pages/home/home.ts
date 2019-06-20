@@ -15,7 +15,7 @@ export class HomePage {
   public listMovies : Array<Movie>;
   public listAny : Array<any> = ['Teste',10,true];
 
-  constructor(public navCtrl: NavController,public dbProvider : MovieDaoProvider) {
+  constructor(public navCtrl: NavController,public daoMovie : MovieDaoProvider) {
 
   }
 
@@ -23,8 +23,16 @@ export class HomePage {
     this.updateListMovie();
   }
 
+  //Verify that the "remove" successfully deleted a movie or not
+  removeMovie(movie : Movie){
+      this.daoMovie.remove(movie.getID()).then(() => {
+        this.updateListMovie();
+        alert("Filme removido com Sucesso !");
+      }).catch(e => console.log(e));
+  }
+
   public updateListMovie() : void{
-    this.dbProvider.getAll().then((movies : Array<Movie>) =>{
+    this.daoMovie.getAll().then((movies : Array<Movie>) =>{
       this.listMovies = movies;
     }).catch(e => console.log(e));
   }
