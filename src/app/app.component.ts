@@ -20,9 +20,9 @@ export class MyApp {
 
       dbprovider.createDatabase().then(() =>{
         this.openTabsPage(splashScreen);
-        alert("Database created successfully");
+        //alert("Database created successfully");
       }).catch(e => {
-        alert("Database not created successfully")
+        //alert("Database not created successfully")
         console.error(e)
         this.openTabsPage(splashScreen);
     });

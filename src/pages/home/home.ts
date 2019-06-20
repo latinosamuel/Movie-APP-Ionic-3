@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Movie } from '../../model/Movie';
 import { MovieDaoProvider } from '../../providers/movie-dao/movie-dao';
+import { EditMoviePage } from '../edit-movie/edit-movie';
 
 @Component({
   selector: 'page-home',
@@ -29,6 +30,10 @@ export class HomePage {
         this.updateListMovie();
         alert("Filme removido com Sucesso !");
       }).catch(e => console.log(e));
+  }
+
+  editMovie(movie : Movie){
+    this.navCtrl.push(EditMoviePage, {editMovie : movie});
   }
 
   public updateListMovie() : void{

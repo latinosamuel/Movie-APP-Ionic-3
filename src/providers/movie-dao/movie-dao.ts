@@ -68,7 +68,7 @@ public getAll(){
         let movies = new Array<Movie>();
         for (var i = 0; i < data.rows.length; i++){
           let tmp = data.rows.item(i);
-          var movie = new Movie(tmp.id,tmp.backdropPath, tmp.originalTitle, tmp.overview,tmp.posterPath, tmp.title);
+          var movie = new Movie(tmp.id,tmp.backdrop_path, tmp.original_title, tmp.overview,tmp.poster_path, tmp.title);
           movies.push(movie);
         }
         return movies;

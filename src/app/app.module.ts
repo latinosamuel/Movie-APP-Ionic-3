@@ -16,6 +16,7 @@ import { MovieDetailPageModule } from '../pages/movie-detail/movie-detail.module
 import { SQLite } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../providers/database/database';
 import { MovieDaoProvider } from '../providers/movie-dao/movie-dao';
+import { EditMoviePageModule } from '../pages/edit-movie/edit-movie.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MovieDaoProvider } from '../providers/movie-dao/movie-dao';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    MovieDetailPageModule
+    MovieDetailPageModule,
+    EditMoviePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
